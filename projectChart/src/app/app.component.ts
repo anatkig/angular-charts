@@ -7,6 +7,7 @@ import Accessbility from 'highcharts/modules/accessibility';
 import { Component, VERSION, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AgGridAngular } from 'ag-grid-angular';
+import 'ag-grid-enterprise';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -83,9 +84,13 @@ export class AppComponent {
 
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
-    { field: 'make'},
-    { field: 'model'},
-    { field: 'price' }
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'athlete' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
 
   // DefaultColDef sets props common to all Columns
@@ -100,7 +105,7 @@ export class AppComponent {
   // Example load data from server
   onGridReady(params: GridReadyEvent) {
     this.rowData$ = this.http
-      .get<any[]>('https://www.ag-grid.com/example-assets/row-data.json');
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json');
   }
 
   // Example of consuming Grid Event

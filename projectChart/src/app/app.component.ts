@@ -23,9 +23,9 @@ Accessbility(Highcharts);
 })
 export class AppComponent {
   @ViewChild('lineChart', { static: false }) lineChart: any;
-  @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
-  constructor(private http: HttpClient) {}
+
+
 
   Highcharts: typeof Highcharts = Highcharts;
   updateFlag = false;
@@ -81,7 +81,6 @@ export class AppComponent {
     },
   };
 
-  
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
     { field: 'make'},
@@ -97,7 +96,8 @@ export class AppComponent {
   
   // Data that gets displayed in the grid
   public rowData$!: Observable<any[]>;
-
+  @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
+  constructor(private http: HttpClient) {}
   // Example load data from server
   onGridReady(params: GridReadyEvent) {
     this.rowData$ = this.http

@@ -4,6 +4,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AgGridModule } from 'ag-grid-angular';
     BrowserModule,
     AppRoutingModule,
     HighchartsChartModule,
-    AgGridModule
+    AgGridModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
